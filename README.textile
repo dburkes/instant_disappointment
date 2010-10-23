@@ -1,0 +1,67 @@
+h1. InstantDisappointment
+
+InstantDisappointmentFormatter is an RSpec formatter that combines the succinct output of ProgressBarFormatter with the fast failure details of SpecDocFormatter.  
+
+If you have a large suite of specs, and they take a long time to run, it's likely you are using the ProgressBarFormatter (@--format p@) to squelch RSpec's noisy output and run your specs faster. Unfortunately, the ProgressBarFormatter doesn't print failure details until all specs are finished, so, if you get a failure early in your specs, you have to wait a long time before you can see the details of the failure.
+
+Well, no more- the InsantDisappointmentFormatter behaves like ProgressBarFormatter when specs pass or are pending, but prints the details of failing specs immediately, so you can get on with the fixing while the specs continue to run in the background.
+
+h1. Installation
+
+<pre>
+  gem install instant_disappointment
+</pre>
+
+h1. Usage
+
+If you run @spec@ from the command line:
+
+<pre>
+  spec --require instant_disappointment_formatter --formatter Spec::Runner::Formatter::InstantDisappointmentFormatter <your_specfiles_here>
+</pre>
+
+If you use a @spec.opts@ file:
+
+<pre>
+  --require instant_disappointment_formatter
+  --formatter Spec::Runner::Formatter::InstantDisappointmentFormatter
+</pre>
+
+h1. Example
+
+h2. Without InstantDispappointment
+
+<pre>
+  spec spec 
+  ......................F......................................................................
+
+  1)
+  'PeoplePlacesThings::PersonName should not parse middle initial as suffix' FAILED
+  expected: "browxn",
+       got: "brown" (using ==)
+  ./spec/person_name_spec.rb:44:
+
+  Finished in 0.079263 seconds
+
+  93 examples, 1 failure
+</pre>
+
+h2. With InstantDisappointment
+
+<pre>
+  spec -r instant_disappointment_formatter -f Spec::Runner::Formatter::InstantDisappointmentFormatter spec
+  ......................F
+
+  1)
+  'PeoplePlacesThings::PersonName should not parse middle initial as suffix' FAILED
+  expected: "browxn",
+       got: "brown" (using ==)
+  /Users/dburkes/work/people_places_things/spec/person_name_spec.rb:44:
+
+  ......................................................................
+  Finished in 0.069332 seconds
+
+  93 examples, 1 failure
+</pre>
+
+_BUENO!_
