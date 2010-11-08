@@ -17,7 +17,7 @@ h1. Usage
 If you run @spec@ from the command line:
 
 <pre>
-  spec --require instant_disappointment_formatter --formatter Spec::Runner::Formatter::InstantDisappointmentFormatter <your_specfiles_here>
+  spec --require instant_disappointment_formatter --format Spec::Runner::Formatter::InstantDisappointmentFormatter <your_specfiles_here>
 </pre>
 
 If you use a @spec.opts@ file:
