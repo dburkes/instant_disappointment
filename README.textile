@@ -24,7 +24,7 @@ If you use a @spec.opts@ file:
 
 <pre>
   --require instant_disappointment_formatter
-  --formatter Spec::Runner::Formatter::InstantDisappointmentFormatter
+  --format Spec::Runner::Formatter::InstantDisappointmentFormatter
 </pre>
 
 h1. Example
