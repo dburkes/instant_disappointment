@@ -4,7 +4,7 @@ module Spec
   module Runner
     module Formatter
       class InstantDisappointmentFormatter < ProgressBarFormatter
-        VERSION = "1.0.0"
+        VERSION = "1.1.0"
         SHOW_TOP = (ENV['PROFILE_SHOW_TOP'] || 20).to_i
 
         def initialize(*args)
